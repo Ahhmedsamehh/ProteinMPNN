@@ -1,0 +1,25 @@
+name: build-rfdiffusion
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile          # your -f
+          platforms: linux/amd64           # your --platform (now native, no emulation)
+          push: true                       # your --push
+          tags: |
+            ahhmedsamehh/protein-mpnn:latest
