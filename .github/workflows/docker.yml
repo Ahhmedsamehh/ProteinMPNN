@@ -18,7 +18,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: .
-          file: docker/Dockerfile          # your -f
+          file: ./Dockerfile          # your -f
           push: true                       # your --push
           tags: |
             ahhmedsamehh/protein-mpnn:latest
