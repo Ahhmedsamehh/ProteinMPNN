@@ -19,7 +19,6 @@ jobs:
         with:
           context: .
           file: docker/Dockerfile          # your -f
-          platforms: linux/amd64           # your --platform (now native, no emulation)
           push: true                       # your --push
           tags: |
             ahhmedsamehh/protein-mpnn:latest
